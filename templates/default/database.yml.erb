@@ -1,0 +1,22 @@
+<%= @rails_env %>:
+  adapter: <%= @adapter %>
+  host: <%= @host %>
+  port: <%= @port %>
+  database: <%= @database %>
+  username: <%= @username %>
+  password: <%= @password %>
+  template: <%= @template %>
+  schema_search_path: public
+  encoding: utf8
+  pool: 50
+
+test:
+  adapter: <%= @adapter %>
+  host: <%= @host %>
+  port: <%= @port %>
+  database: <%= @database %>_testdb
+  username: <%= @username %>
+  password: <%= @password %>
+  template: <%= @template %>
+  schema_search_path: public
+  encoding: utf8

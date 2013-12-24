@@ -1,0 +1,7 @@
+#!/bin/bash
+. <%= @homedir %>/.bashrc
+export RAILS_ENV=<%= @rails_env %>
+cd <%= @project_dir %>
+cd ../bin
+./thinctl_.sh stop
+./thinctl_.sh start

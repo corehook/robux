@@ -1,0 +1,7 @@
+#!/bin/bash
+for filename in log/*.log
+do
+    echo "Cutting file $filename"
+    tail -c 10M $filename > $filename.cut
+    mv $filename.cut $filename
+done
