@@ -1,7 +1,7 @@
 # if false we don't compile assets, just download
 # from #{node.robux.assets_url}. http://ws.deploy.om/#{env}.assets.tar.gz
 if node['robux']['assets_compile'] == 'false'
-  bash "precompile assets" do
+  bash "download assets from share server" do
     user node.user
     group node.user
     code <<-EOC
