@@ -18,3 +18,21 @@ template "#{node.robux.dirs.base_dir}/app/config/thin.yml" do
     :chdir      => "#{node.robux.dirs.base_dir}/app",
   })
 end
+
+db_config = node[:robux][:database]
+template "#{node.robux.dirs.base_dir}/#{node.robux.dirs.app}/config/database.yml" do
+  source 'database.yml.erb'
+  owner node.user
+  group node.user
+  mode 0644
+  variables(
+      :rails_env => node.robux.rails_env,
+      :adapter => 'postgresql',
+      :host => db_config[:host],
+      :port => db_config[:port],
+      :database => db_config[:name],
+      :username => db_config[:user],
+      :password => db_config[:password],
+      :template => 'template0'
+  )
+end
