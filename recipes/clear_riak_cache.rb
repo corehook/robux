@@ -7,7 +7,7 @@ if node['robux']['components']['riak']['clean']=='true'
       source ~/.rvm/scripts/rvm
       cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}
       ./script/clear_cache.sh #{node.robux.rails_env}
-      source ~/.rvm/scripts/rvm; #{node.rvm_bundle} exec rake riak:cache:clear RAILS_ENV=#{node.robux.rails_env}
+      source ~/.rvm/scripts/rvm; RAILS_ENV=#{node.robux.rails_env} #{node.rvm_bundle} exec rake riak:cache:clear 
     EOC
   end
 end

@@ -1,7 +1,7 @@
 if node.robux.database.attribute?(:migrate)
   if node['robux']['database']['migrate'] == 'true'
     bash "run migrations" do
-     user node.user
+      user node.user
       group node.group
       code <<-EOC
         cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}

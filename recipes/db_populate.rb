@@ -1,4 +1,5 @@
 bash "run migrations, seed database and seed demo data" do
+  ignore_failure true
   user node.user
   group node.group
   code <<-EOC

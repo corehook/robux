@@ -1,5 +1,3 @@
-# if false we don't compile assets, just download
-# from #{node.robux.assets_url}. http://ws.deploy.om/#{env}.assets.tar.gz
 if node['robux']['assets_compile'] == 'false'
   bash "download assets from share server" do
     user node.user
@@ -12,9 +10,7 @@ if node['robux']['assets_compile'] == 'false'
       tar xfz #{node.robux.assets_file}
     EOC
   end
-end
-
-if node['robux']['assets_compile'] == 'true'
+else
   bash "precompile assets" do
     user node.user
     group node.user
@@ -30,8 +26,6 @@ if node['robux']['assets_compile'] == 'true'
   end
 end
 
-# We compile assets only on first server of cluster, so don't need compile on all nodes
-# after compile need to uplaod on ws.deploy.om
 if node['robux']['assets_upload'] == 'true'
   bash "upload compiled assets" do
     user node.user
