@@ -4,5 +4,3 @@ if node['robux']['database']['init_db'] == 'true'
   include_recipe "robux::db_create"
   include_recipe "robux::db_populate"
 end
-
-

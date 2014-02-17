@@ -5,7 +5,7 @@ bash "start thin" do
   code <<-EOC
     source #{node.homedir}/.rvm/environments/default
     cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}/
-    bundle exec thin -C config/thin.yml start
+    RAILS_ENV=#{node.robux.rails_env} bundle exec thin -C config/thin.yml start
   EOC
   action :run
 end
