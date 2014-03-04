@@ -1,6 +1,9 @@
 # Drop application database
 if node['robux']['database']['drop'] == 'true'
   bash "dropping database with rake db:drop" do
+    user node.user
+    group node.group
+    ignore_failure false
     code <<-EOC
       cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}
       source ~/.rvm/scripts/rvm

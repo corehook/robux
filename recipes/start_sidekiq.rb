@@ -9,3 +9,19 @@ if node['robux']['components']['sidekiq']['start'] == 'true'
     EOC
   end
 end
+
+
+
+if node['robux']['components']['sidekiq']['start'] == 'true'
+  bash "check if process sidekiq is running" do
+  ignore_failure true
+    code <<-EOC
+      echo "Checking if running sidekiq"
+      if [ -z "`pgrep -f sidekiq -u #{node.user}`" ]; then
+        exit 0
+      fi
+      exit 1
+    EOC
+    returns 1
+  end
+end

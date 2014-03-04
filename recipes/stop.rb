@@ -14,6 +14,7 @@ bash "entering to maintenance mode" do
     fi
   EOC
 end
+
 include_recipe "robux::stop_thin"
 
 # Stopping puma clockwork and sidekiq processes

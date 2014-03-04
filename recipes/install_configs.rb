@@ -36,3 +36,17 @@ template "#{node.robux.dirs.base_dir}/#{node.robux.dirs.app}/config/database.yml
       :template => 'template0'
   )
 end
+
+if node['robux']['components']['clockwork']['start'] == 'true'
+  template "#{node.robux.dirs.base_dir}/app/clock.monitor.god" do
+    source 'clock.monitor.god.erb'
+    owner node.user
+    group node.user
+    variables({
+      :RAILS_ROOT => node.project_dir,
+      :env        => node.robux.rails_env,
+      :user       => node.user,
+      :group      => node.group
+    })
+  end
+end
