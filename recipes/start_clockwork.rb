@@ -11,7 +11,8 @@ if node['robux']['components']['clockwork']['start'] == 'true'
   end
 
   bash "check if process clockwork is running" do
-  ignore_failure true
+    user node.user
+    ignore_failure true
     code <<-EOC
       echo "Checking if running: clockwork"
       if [ -z "`pgrep -f clockwork -u #{node.user}`" ]; then

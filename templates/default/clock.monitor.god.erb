@@ -1,16 +1,13 @@
-PID_FILE="<%= @RAILS_ROOT %>/tmp/pids/clock.pid"
-
 God.watch do |w|
   w.name = "clockwork_jobs"
-  w.pid_file = PID_FILE
-
+  w.pid_file = "<%= @RAILS_ROOT %>/tmp/pids/clock.pid"
   w.interval = 10.seconds
   w.env      = { "RAILS_ENV" => "<%= @env %>" }
   w.dir      = "<%= @RAILS_ROOT %>"
 
-  w.restart  = "kill -QUIT `cat #{PID_FILE}` && bundle exec clockwork clock.rb"
-  w.start = "clockwork clock.rb"
-  w.stop = "kill -QUIT `cat #{PID_FILE}`"
-
+  w.restart  = "kill -9 `cat <%= @RAILS_ROOT %>/tmp/pids/clock.pid` && cd <%= @RAILS_ROOT %> && bundle exec clockwork clock.rb -e <%= @env %>"
+  w.start = "cd <%= @RAILS_ROOT %> && bundle exec clockwork clock.rb -e <%= @env %>"
+  w.stop = " cd <%= @RAILS_ROOT %> && kill -9 `cat <%= @RAILS_ROOT %>/tmp/pids/clock.pid`"
+  w.behavior(:clean_pid_file)
   w.keepalive
 end

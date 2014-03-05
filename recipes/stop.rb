@@ -16,9 +16,10 @@ bash "entering to maintenance mode" do
 end
 
 include_recipe "robux::stop_thin"
+include_recipe "robux::stop_clockwork"
 
 # Stopping puma clockwork and sidekiq processes
-%w(thin clockwork sidekiq).each do |process_name|
+%w(thin sidekiq).each do |process_name|
   bash "killing processes thin, clockwork, sidekiq" do
     ignore_failure true
     code <<-EOC
