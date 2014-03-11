@@ -9,6 +9,7 @@ end
 node['robux']['software'].each do |pkg|
   package pkg do
     action :install
+    options "--force-yes -y"
   end
 end
 

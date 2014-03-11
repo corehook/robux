@@ -13,12 +13,14 @@ directory "#{node.robux.dirs.base_dir}/#{node.robux.dirs.app}/" do
   action :create
 end
 
+if node['robux']['dirs']['tmp']
 # Create /opt/tmp dir for tmp files
-directory "#{node.robux.dirs.tmp}" do
-  recursive true
-  owner node.user
-  group node.group
-  action :create
+  directory "#{node.robux.dirs.tmp}" do
+    recursive true
+    owner node.user
+    group node.group
+    action :create
+  end
 end
 
 # Create /opt/robux/bin dir
@@ -36,6 +38,5 @@ bash "create new project dir" do
     cd #{node.robux.dirs.base_dir}
     git clone -b #{node.robux.git.branch} #{node.robux.git.url} #{node.robux.dirs.app}
     cd #{node.robux.dirs.app}
-    git log -n 1 > public/last.commit.txt
   EOC
 end
