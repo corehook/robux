@@ -1,0 +1,6 @@
+[
+  {"recipe_name":"_full_deploy","description":"Полный деплой с обновлением кода, ассетами и  с очисткой базы данных"},
+  {"recipe_name":"_simple_deploy_with_migrations","description":"Простой деплой с обновлением кода, ассетами и  с миграциями db:migrate"},
+  {"recipe_name":"_simple_deploy_with_migrations_and_db_seed","description":"Простой деплой с обновлением кода, ассетами и  с миграциями db:migrate и сидом db:seed"},
+  {"recipe_name":"_simple_deploy_with_out_migrations","description":"Простой деплой только с обновлением кода и compile assets"}
+]
