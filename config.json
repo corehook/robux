@@ -2,5 +2,5 @@
   {"name":"Полный деплой с базой.", "recipe_name":"_full_deploy","description":"Полный деплой с обновлением кода, ассетами и  с очисткой базы данных"},
   {"name":"Простой деплой без базы с миграциями.","recipe_name":"_simple_deploy_with_migrations","description":"Простой деплой с обновлением кода, ассетами и  с миграциями db:migrate"},
   {"name":"Простой деплой без базы с миграциями и сидами.","recipe_name":"_simple_deploy_with_migrations_and_db_seed","description":"Простой деплой с обновлением кода, ассетами и  с миграциями db:migrate и сидом db:seed"},
-  {"name":"Простой деплой без базы.",recipe_name.":"_simple_deploy_with_out_migrations","description":"Простой деплой только с обновлением кода и compile assets"}
+  {"name":"Простой деплой без базы.","recipe_name.":"_simple_deploy_with_out_migrations","description":"Простой деплой только с обновлением кода и compile assets"}
 ]
