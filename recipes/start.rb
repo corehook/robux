@@ -35,11 +35,12 @@ bash "exiting maintenance mode and log last deploy data" do
   group node.group
   code <<-EOC
     cd #{node.project_dir}/public
-    date > last.deploy.txt
     if [ -f maintenance.html ]; then
       mv maintenance.html maintenance_.html
     fi
     cd ../
+    date > public/last.deploy.txt
     git log -n 1 > public/last.commit.txt
+    cat Gemfile.lock  > public/gem.lock.txt
   EOC
 end
