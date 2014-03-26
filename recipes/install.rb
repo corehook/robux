@@ -2,14 +2,14 @@ include_recipe "robux::install_software"
 # Create /opt/robux
 directory "#{node.robux.dirs.base_dir}" do 
   owner node.user
-  group node.user
+  group node.group
   action :create
 end
 
 # Create /opt/robux/app dir 
 directory "#{node.robux.dirs.base_dir}/#{node.robux.dirs.app}/" do 
   owner node.user
-  group node.user
+  group node.group
   action :create
 end
 
