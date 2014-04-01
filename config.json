@@ -5,5 +5,6 @@
   {"name":"Простой деплой без базы.","recipe_name":"_simple_deploy_with_out_migrations","description":"Простой деплой только с обновлением кода и compile assets"},
   {"name":"Тестовый рецепт.","recipe_name":"test","description":"Тестовый рецепт который ничего не делает, можно запускать для проверка работоспособности системы"},
   {"name":"Перезагрузка приложения","recipe_name":"restart","description":"Перезагрузка приложения"},
-  {"name":"Инициализация серверов","recipe_name":"reinstall","description":"Инициализация нового сервера"}
+  {"name":"Инициализация серверов","recipe_name":"reinstall","description":"Инициализация нового сервера"},
+  {"name":"Обновить исходный код и перезапустить приложение","recipe_name":"_update_source_and_restart","description":"Обновление исходного кода из github и перезагрузка приложения."}
 ]

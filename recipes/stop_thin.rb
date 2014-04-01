@@ -5,6 +5,6 @@ bash "stoping thin server" do
   code <<-EOC
     source #{node.home_dir}/.rvm/environments/default
     cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}
-    RAILS_ENV=#{node.robux.rails_env} #{node.rvm_bundle} exec thin -C config/thin.yml stop
+    #{node.rvm_bundle} exec thin -C config/thin.yml stop
   EOC
 end
