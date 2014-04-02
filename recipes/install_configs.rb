@@ -7,7 +7,7 @@ template "#{node.robux.dirs.base_dir}/app/config/thin.yml" do
   mode 0775
   variables({
     :user       => node.user,
-    :group      => node.group,
+    :group      => node.user,
     :pid        => "#{node.robux.dirs.base_dir}/app/tmp/pids/thin.pid",
     :timeout    => "30",
     :wait       => "30",

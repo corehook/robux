@@ -20,7 +20,7 @@ include_recipe "robux::stop_clockwork"
 
 # Stopping puma clockwork and sidekiq processes
 %w(thin sidekiq).each do |process_name|
-  bash "killing processes thin, clockwork, sidekiq" do
+  bash "killing processes thin sidekiq" do
     ignore_failure true
     code <<-EOC
       echo "Terminating #{process_name}"
@@ -31,20 +31,20 @@ include_recipe "robux::stop_clockwork"
   end
 end
 
-# kill sidekick process
-bash "killing sidekiq process" do
-  ignore_failure true
-  code <<-EOC
-    cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}
-    if [ -f 'log/sidekiq.pid' ]; then
-      kill `cat log/sidekiq.pid`
-      pkill -f sidekiq -u #{node.user}
-      rm -f log/sidekiq.pid
-    fi
-  EOC
-  action :run
-  only_if { File.exist?(node.project_dir) && node.robux.components.attribute?(:sidekick)}
-end
+# # kill sidekick process
+# bash "killing sidekiq process" do
+#   ignore_failure true
+#   code <<-EOC
+#     cd #{node.robux.dirs.base_dir}/#{node.robux.dirs.app}
+#     if [ -f 'log/sidekiq.pid' ]; then
+#       kill `cat log/sidekiq.pid`
+#       pkill -f sidekiq -u #{node.user}
+#       rm -f log/sidekiq.pid
+#     fi
+#   EOC
+#   action :run
+#   only_if { File.exist?(node.project_dir) && node.robux.components.attribute?(:sidekick)}
+# end
 
 processes_to_kill = {'clockwork' => 'ruby.\{1,\}bin/clockwork.\{1,\}clock.rb',
                      'faye' => 'rackup.\{1,\}faye_server'}

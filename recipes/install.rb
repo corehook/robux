@@ -31,7 +31,7 @@ directory "#{node.robux.dirs.base_dir}/#{node.robux.dirs.scripts}/" do
   action :create
 end
 
-bash "create new project dir" do
+bash "Создаю папку для проекта по адресу #{node.robux.dirs.base_dir} из репозитория #{node.robux.git.url}/#{node.robux.git.branch}" do
   user node.user
   group node.group
   code <<-EOC
