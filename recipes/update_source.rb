@@ -6,7 +6,7 @@ bash "Update source code from #{node.robux.git.url} branch #{node.robux.git.bran
   group node.group
   code <<-EOC
     cd #{node.project_dir}
-    git pull
+    git checkout #{node.robux.git.branch}
     git fetch origin #{node.robux.git.branch}
   EOC
 end
@@ -19,7 +19,8 @@ if node['robux']['git']['commit']
     group node.group
     code <<-EOC
       cd #{node.project_dir}
-      git pull
+      git checkout #{node.robux.git.branch}
+      git pull origin #{node.robux.git.branch}
       git reset --hard #{node.robux.git.commit}
     EOC
   end
